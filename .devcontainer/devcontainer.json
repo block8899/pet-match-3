@@ -1,0 +1,25 @@
+{
+  "name": "Flutter Game Dev",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  // Cài đặt Flutter SDK tự động
+  "postCreateCommand": "git clone https://github.com/flutter/flutter.git ~/flutter && echo 'export PATH=~/flutter/bin:$PATH' >> ~/.bashrc && ~/flutter/bin/flutter precache && ~/flutter/bin/flutter config --no-analytics",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "Dart-Code.flutter",
+        "Dart-Code.dart-code",
+        "GitHub.copilot"
+      ]
+    }
+  },
+  "forwardPorts": [3000],
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:~/flutter/bin"
+  }
+}
